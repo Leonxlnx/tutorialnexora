@@ -10,5 +10,6 @@ yarn-error.log*
 next-dev.log
 next-dev.err.log
 qa/
+test-results/
 
 .vercel

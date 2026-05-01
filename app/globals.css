@@ -514,7 +514,7 @@ a {
 .hero-artwork {
   position: absolute;
   inset: calc(var(--header-height) + 12px) 0 28px 0;
-  background-image: url("/images/section1.png");
+  background-image: url("/images/section1.webp");
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: contain;
@@ -722,7 +722,7 @@ a {
   z-index: 2;
   width: min(39vw, 665px);
   height: calc(100svh - var(--header-height) - clamp(42px, 7vh, 72px));
-  background-image: url("/images/section2.png");
+  background-image: url("/images/section2.webp");
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: contain;
@@ -3022,9 +3022,26 @@ a {
 }
 
 @media (max-width: 760px) {
+  html,
   body {
     width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
+  }
+
+  main,
+  .page-shell,
+  .trust-section,
+  .solutions-section,
+  .case-section,
+  .process-section,
+  .testimonials-section,
+  .pricing-section,
+  .final-section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
   }
 
   .site-header {
@@ -3053,8 +3070,7 @@ a {
 
   .hero-rail,
   .section-rail {
-    left: 24px;
-    opacity: 0.58;
+    display: none;
   }
 
   .hero {
@@ -3069,8 +3085,9 @@ a {
   .testimonials-copy,
   .pricing-copy,
   .final-copy {
-    width: calc(100vw - 62px);
-    margin-left: 40px;
+    width: min(100%, 560px);
+    padding-top: calc(var(--header-height) + 44px);
+    margin: 0;
   }
 
   .hero-copy h1,
@@ -3104,59 +3121,91 @@ a {
   .testimonials-section,
   .pricing-section,
   .final-section {
+    display: flex;
+    flex-direction: column;
     min-height: auto;
+    padding: calc(var(--header-height) + 38px) 24px 42px;
   }
 
   .trust-section {
-    padding-bottom: 360px;
+    gap: 34px;
   }
 
   .section-two-artwork {
-    right: -14vw;
-    bottom: 0;
-    width: 92vw;
-    height: 330px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    align-self: stretch;
+    width: 100%;
+    height: clamp(320px, 78vw, 450px);
+    margin: 8px 0 0;
+    background-position: center bottom;
+    background-size: contain;
   }
 
   .solutions-section {
     height: auto;
     min-height: auto;
     grid-template-columns: 1fr;
+    padding: calc(var(--header-height) + 38px) 20px 42px 24px;
   }
 
   .solutions-copy {
-    width: calc(100vw - 58px);
+    width: 100%;
   }
 
   .solutions-grid {
     width: 100%;
-    gap: 14px;
+    height: auto;
+    min-height: 0;
+    gap: 16px;
   }
 
   .solution-card,
   .solution-card-large,
   .solution-card-wide {
-    min-height: 320px;
+    min-height: 360px;
+    border-radius: 14px;
+    contain: paint;
+  }
+
+  .solution-card img,
+  .solution-card-large img,
+  .solution-card-wide img,
+  .solution-card-small img {
+    inset: auto 0 0 auto;
+    width: min(78%, 390px);
+    height: 64%;
+    object-fit: contain;
+    object-position: right bottom;
+  }
+
+  .solution-card-wide img {
+    width: min(86%, 430px);
   }
 
   .case-section {
-    padding-bottom: 360px;
+    gap: 36px;
   }
 
   .case-visual {
-    right: -22vw;
-    bottom: 0;
-    width: 124vw;
-    height: 360px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(330px, 82vw, 470px);
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
   }
 
   .case-visual::before,
   .final-visual::before {
-    height: 42%;
+    height: 34%;
   }
 
   .process-section {
-    padding-bottom: 300px;
+    gap: 34px;
   }
 
   .process-steps {
@@ -3164,35 +3213,56 @@ a {
     top: auto;
     right: auto;
     left: auto;
-    width: calc(100vw - 76px);
-    margin: 52px 38px 0;
+    width: 100%;
+    margin: 18px 0 0;
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .process-step,
+  .process-step:nth-child(odd) {
+    min-height: auto;
+    padding: 0 0 24px 18px;
+    border-right: 0;
+    border-left: 1px solid rgba(35, 34, 31, 0.1);
   }
 
   .process-visual {
-    right: 16px;
-    bottom: 46px;
-    left: 38px;
-    height: 230px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    height: clamp(210px, 48vw, 300px);
+    margin-top: 8px;
   }
 
   .testimonials-section {
-    padding-bottom: 340px;
+    gap: 32px;
   }
 
   .testimonial-list {
-    width: calc(100vw - 76px);
-    margin: 48px 38px 0;
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: 100%;
+    margin: 14px 0 0;
   }
 
   .testimonial-visual {
-    right: -26vw;
-    bottom: 0;
-    width: 118vw;
-    height: 340px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(360px, 92vw, 510px);
+    margin-top: 4px;
+    border-radius: 16px;
+    overflow: hidden;
   }
 
   .pricing-section {
-    padding-bottom: 240px;
+    gap: 30px;
   }
 
   .pricing-cards {
@@ -3200,8 +3270,9 @@ a {
     top: auto;
     right: auto;
     left: auto;
-    width: calc(100vw - 76px);
-    margin: 52px 38px 0;
+    width: 100%;
+    margin: 12px 0 0;
+    grid-template-columns: 1fr;
   }
 
   .pricing-card {
@@ -3209,35 +3280,71 @@ a {
   }
 
   .pricing-visual {
-    right: -28vw;
-    bottom: 0;
-    width: 88vw;
-    height: 230px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(260px, 68vw, 380px);
+    margin-top: 0;
+    overflow: hidden;
   }
 
   .final-section {
-    padding-bottom: 210px;
+    gap: 30px;
+    padding-bottom: 0;
   }
 
   .final-visual {
-    right: -26vw;
-    bottom: 130px;
-    width: 118vw;
-    height: 310px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(320px, 82vw, 460px);
+    margin-top: 0;
+    border-radius: 16px;
+    overflow: hidden;
   }
 
   .footer-bar {
     position: relative;
+    z-index: 8;
     grid-template-columns: 1fr;
     gap: 22px;
     min-height: auto;
-    padding: 30px 24px 32px 38px;
+    width: calc(100% + 48px);
+    margin: 8px -24px 0;
+    padding: 32px 24px 34px;
+    color: rgba(255, 255, 255, 0.92);
+    background: #151a1c;
+    border-top: 1px solid rgba(255, 255, 255, 0.11);
+    box-shadow: none;
   }
 
   .footer-nav,
   .footer-legal {
     justify-content: flex-start;
     justify-self: start;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .footer-brand {
+    color: #fff;
+  }
+
+  .footer-legal span,
+  .footer-legal i {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .trust-section .reveal-on-scroll,
+  .solutions-section .reveal-on-scroll,
+  .case-section .reveal-on-scroll,
+  .process-section .reveal-on-scroll,
+  .testimonials-section .reveal-on-scroll,
+  .pricing-section .reveal-on-scroll,
+  .final-section .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
   }
 }
 

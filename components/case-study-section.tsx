@@ -58,7 +58,7 @@ export function CaseStudySection() {
       </div>
 
       <div className="case-visual" aria-hidden="true">
-        <img src="/images/section4.png" alt="" />
+        <img src="/images/section4.webp" alt="" />
       </div>
 
       <div className="case-pager" aria-hidden="true">

@@ -54,7 +54,7 @@ export function ProcessSection() {
       </div>
 
       <div className="process-visual" aria-hidden="true">
-        <img src="/images/section5.png" alt="" />
+        <img src="/images/section5.webp" alt="" />
       </div>
 
       <div className="process-note" aria-hidden="true">

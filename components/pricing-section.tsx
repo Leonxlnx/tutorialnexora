@@ -84,7 +84,7 @@ export function PricingSection() {
       </div>
 
       <div className="pricing-visual" aria-hidden="true">
-        <img src="/images/section7.png" alt="" />
+        <img src="/images/section7.webp" alt="" />
       </div>
 
       <div className="pricing-note" aria-hidden="true">

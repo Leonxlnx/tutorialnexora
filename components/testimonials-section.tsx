@@ -89,7 +89,7 @@ export function TestimonialsSection() {
       </div>
 
       <div className="testimonial-visual" aria-hidden="true">
-        <img src="/images/section6.png" alt="" />
+        <img src="/images/section6.webp" alt="" />
       </div>
     </section>
   );

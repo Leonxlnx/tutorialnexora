@@ -43,7 +43,7 @@ export function FinalCtaSection() {
       </div>
 
       <div className="final-visual" aria-hidden="true">
-        <img src="/images/section8.png" alt="" />
+        <img src="/images/section8.webp" alt="" />
       </div>
 
       <footer className="footer-bar" aria-label="Footer">

@@ -1,5 +1,5 @@
 Current hero artwork:
 
-section1.png
+section1.webp
 
-The app loads it from `/images/section1.png` on the right side of the hero.
+The app loads WebP section artwork from this folder.
