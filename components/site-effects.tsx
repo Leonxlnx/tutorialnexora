@@ -3,14 +3,12 @@
 import { useEffect } from "react";
 
 const revealSelectors = [
-  ".hero-copy",
   ".hero-copy .eyebrow",
   ".hero-copy h1",
   ".hero-copy .intro",
   ".hero-copy .button",
   ".hero-visual",
   ".purpose-note",
-  ".trust-copy",
   ".trust-copy .eyebrow",
   ".trust-copy h2",
   ".trust-copy > p:not(.eyebrow)",
@@ -34,22 +32,21 @@ const revealSelectors = [
   ".case-actions > *",
   ".case-visual",
   ".case-pager",
-  ".process-copy",
   ".process-step",
   ".process-visual",
-  ".testimonials-copy",
   ".result-metric",
   ".case-more-link",
   ".testimonial-quote",
   ".testimonial-visual",
-  ".pricing-copy",
   ".pricing-card",
   ".pricing-card h3",
   ".pricing-value",
   ".pricing-card li",
   ".pricing-button",
   ".pricing-visual",
-  ".final-copy",
+  ".final-copy .eyebrow",
+  ".final-copy h2",
+  ".final-copy > p",
   ".final-actions > *",
   ".final-visual",
   ".footer-brand",
@@ -78,9 +75,15 @@ export function SiteEffects() {
     setHeaderState();
     window.addEventListener("scroll", setHeaderState, { passive: true });
 
-    const revealNodes = Array.from(
+    const timers: number[] = [];
+    const revealNodes = Array.from(new Set(
       document.querySelectorAll<HTMLElement>(revealSelectors.join(",")),
+    ));
+
+    const immediateHeroNodes = Array.from(
+      document.querySelectorAll<HTMLElement>(".hero .is-visible"),
     );
+    immediateHeroNodes.forEach((node) => node.classList.remove("is-visible"));
 
     document.body.classList.add("motion-ready");
 
@@ -98,7 +101,9 @@ export function SiteEffects() {
     const heroVisibleOnLoad = window.scrollY < window.innerHeight * 0.72;
     if (heroVisibleOnLoad) {
       heroNodes.forEach((node, index) => {
-        window.setTimeout(() => node.classList.add("is-visible"), 120 + index * 95);
+        timers.push(
+          window.setTimeout(() => node.classList.add("is-visible"), 140 + index * 105),
+        );
       });
     }
 
@@ -142,6 +147,7 @@ export function SiteEffects() {
 
     return () => {
       window.removeEventListener("scroll", setHeaderState);
+      timers.forEach((timer) => window.clearTimeout(timer));
       revealObserver.disconnect();
       sectionObserver.disconnect();
     };
